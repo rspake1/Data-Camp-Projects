@@ -22,7 +22,7 @@ def show_dataset_images(dataset, num_images=5):
 # Inspect 5 codes images from the dataset
 show_dataset_images(dataset)
 
-class Net(nn.Module):
+class OCRModel(nn.Module):
     def __init__(self):
         super().__init__()
         self.image_layer = nn.Sequential(
