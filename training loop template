@@ -33,7 +33,7 @@ class Net(nn.Module):
 
     def forward(self, x):
         # Update ReLU activation to ELU
-        x = nn.functional.relu(self.fc1(x))
-        x = nn.functional.relu(self.fc2(x))
+        x = nn.functional.elu(self.fc1(x))
+        x = nn.functional.elu(self.fc2(x))
         x = nn.functional.sigmoid(self.fc3(x))
         return x
