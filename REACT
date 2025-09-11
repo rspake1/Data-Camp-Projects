@@ -33,3 +33,18 @@ def hypotenuse_length(input: str) -> float:
 In the above example, we created a simple tool for agents to use that takes an input txt string, splits the gathered numbers from the string, converts to a float, then performs
 the calculation on them
 '''
+# Create a list variable and pass in your tool
+tools = [hypotenuse_length]
+
+# Create a query using natural language
+query = "What is the hypotenuse length of a triangle with side lengths of 10 and 12?"
+
+# Pass in the hypotenuse length tool and create the agent
+app = create_react_agent(model, tools)
+
+# Invoke the agent and print the response
+response = app.invoke({"messages": [("human", query)]})
+print(response['messages'][-1].content)
+'''
+Above we then call the tool we created and pass an example into the agent
+'''
