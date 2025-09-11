@@ -15,3 +15,21 @@ print(response['messages'][-1].content)
 '''
 For the Above problem, tool, ChatOpenAI, create_react_agent, math, and model were loaded already asd well as the tool "count_r_in_word"
 '''
+# Define this math function as a tool
+@tool
+def hypotenuse_length(input: str) -> float:
+    """Calculates the length of the hypotenuse of a right-angled triangle given the lengths of the other two sides."""
+    
+    # Split the input string to get the lengths of the triangle
+    sides = input.split(',')
+    
+    # Convert the input values to floats, removing extra spaces
+    a = float(sides[0].strip())
+    b = float(sides[1].strip())
+    
+    # Square each of the values, add them together, and find the square root 
+    return math.sqrt(a**2 + b**2)
+'''
+In the above example, we created a simple tool for agents to use that takes an input txt string, splits the gathered numbers from the string, converts to a float, then performs
+the calculation on them
+'''
