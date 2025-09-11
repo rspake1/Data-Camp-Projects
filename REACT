@@ -1,0 +1,17 @@
+'''
+The code below is the result of practice problems in Data Camp for LLM Agentic Design -- learning Agents and REACT 
+'''
+# Create the agent
+app = create_react_agent(model=model, tools=[count_r_in_word])
+
+# Create a query
+query = "How many r's are in the word 'Terrarium'?"
+
+# Invoke the agent and store the response
+response = app.invoke({"messages": [("human", query)]})
+
+# Print the agent's response
+print(response['messages'][-1].content)
+'''
+For the Above problem, tool, ChatOpenAI, create_react_agent, math, and model were loaded already asd well as the tool "count_r_in_word"
+'''
