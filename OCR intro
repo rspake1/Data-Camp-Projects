@@ -48,3 +48,20 @@ class OCRModel(nn.Module):
 model = OCRModel()
 optimizer = torch.optim.Adam(model.parameters(), lr = 0.001)
 criterion = nn.CrossEntropyLoss()
+
+
+# Initialize the model, optimizer, and loss function
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+criterion = nn.CrossEntropyLoss()
+
+# Training loop
+num_epochs = 10
+for epoch in range(num_epochs):
+   for (images, types), labels in train_loader:
+       optimizer.zero_grad()
+       outputs = model(images, types)
+       loss = criterion(outputs, labels)
+       loss.backward()
+       optimizer.step()
+
+print(f"Epoch{epoch+1}, Loss: {loss.item()}")
