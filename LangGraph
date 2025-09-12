@@ -28,3 +28,19 @@ graph = graph_builder.compile()
 '''
 develop chatbot node and edges and compile
 '''
+# Define a function to execute the chatbot based on user input
+def stream_graph_updates(user_input: str):
+    
+    # Start streaming events from the graph with the user's input
+    for event in graph.stream({"messages": [("user", user_input)]}):
+        
+        # Retrieve and print the chatbot node responses
+        for item in event.values():
+            print("Agent:", item["messages"])
+
+# Define the user query and run the chatbot
+user_query = "Who is Ada Lovelace?"
+stream_graph_updates(user_query)
+'''
+Establish a stream for the events in the graph
+'''
