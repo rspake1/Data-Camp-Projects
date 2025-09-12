@@ -48,3 +48,20 @@ print(response['messages'][-1].content)
 '''
 Above we then call the tool we created and pass an example into the agent
 '''
+message_history = response["messages"]
+new_query = "What about one with sides 12 and 14?"
+
+# Invoke the app with the full message history
+response = app.invoke({"messages": message_history + [("human", new_query)]})
+
+# Extract the human and AI messages from the result
+filtered_messages = [msg for msg in response["messages"] if isinstance(msg, (HumanMessage, AIMessage)) and msg.content.strip()]
+
+# Pass the new query as input and print the final outputs
+print({
+    "user_input": new_query,
+    "agent_output": [f"{msg.__class__.__name__}: {msg.content}" for msg in filtered_messages]
+})
+'''
+Above we include message history
+'''
