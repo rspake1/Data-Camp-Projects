@@ -1,0 +1,14 @@
+# Define the llm
+llm = ChatOpenAI(model="gpt-4o-mini", api_key="OPENAI_API_KEY")
+
+# Define the State
+class State(TypedDict):
+    
+    # Define messages with metadata
+    messages: Annotated[list, add_messages]
+
+# Initialize StateGraph
+graph_builder = StateGraph(State)
+'''
+Above we initialize a state graph
+'''
