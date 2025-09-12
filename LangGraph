@@ -44,3 +44,13 @@ stream_graph_updates(user_query)
 '''
 Establish a stream for the events in the graph
 '''
+# Try generating and displaying the diagram of the graph
+try:
+    display(Image(graph.get_graph().draw_mermaid_png()))
+
+# Return an exception if the generation fails
+except Exception:
+    print("Diagram generation requires additional dependencies.")
+'''
+visualize the graph -- Image, display, and IPython.display has been pre-loaded
+'''
